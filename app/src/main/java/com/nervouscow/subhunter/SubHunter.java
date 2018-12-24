@@ -17,6 +17,21 @@ import java.util.Random;
 
 public class SubHunter extends Activity {
 
+    // These variables can be "seen" throughout the SubHunter class
+    int numberHorizontalPixels;
+    int numberVerticalPixels;
+    int blockSize;
+    int gridWidth=40;
+    int gridHeight;
+    float horizontalTouched = -100;
+    float verticalTouched = -100;
+    int subHorizontalPosition;
+    int subVerticalPosition;
+    boolean hit = false;
+    int shotsTaken;
+    int distnaceFromSub;
+    boolean debugging = true;
+
     /*
         Android runs this code just before the player sees the app.
         This makes it a good place to add the code for the one-time setup phase.
@@ -25,6 +40,17 @@ public class SubHunter extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Get the current device's screen resolution
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+
+        // Initialise our size based variables based on the screen resolution
+        numberHorizontalPixels = size.x;
+        numberVerticalPixels = size.y;
+        blockSize = numberHorizontalPixels / gridWidth;
+        gridHeight = numberVerticalPixels / blockSize;
 
         Log.d("Debugging", "In onCreate");
         newGame();
@@ -46,6 +72,7 @@ public class SubHunter extends Activity {
 
         void draw() {
             Log.d("Debugging","In draw");
+            printDebuggingText();
         }
     /*
         This part of the code will handle detecting that the player has tapped the screen.
@@ -76,6 +103,18 @@ public class SubHunter extends Activity {
         }
     // This code prints the debugging text
         void printDebuggingText(){
-
+            Log.d("numberHorizontalPixels", " " + numberHorizontalPixels);
+            Log.d("numberVerticalPixels", " " + numberVerticalPixels);
+            Log.d("blockSize", " " + blockSize);
+            Log.d("gridWidth", " " + gridWidth);
+            Log.d("gridHeight", " " + gridHeight);
+            Log.d("horizontalTouched", " " + horizontalTouched);
+            Log.d("verticalTouched", " " + verticalTouched);
+            Log.d("subHorizotalPosition", " " + subHorizontalPosition);
+            Log.d("subVerticalPosition", " " + subVerticalPosition);
+            Log.d("hit", " " + hit);
+            Log.d("shotsTaken", " " + shotsTaken);
+            Log.d("debugging", " " + debugging);
+            Log.d("distanceFromSub", " " + distnaceFromSub);
         }
 }
