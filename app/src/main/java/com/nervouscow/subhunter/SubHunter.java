@@ -191,12 +191,14 @@ public class SubHunter extends Activity {
             paint.setColor(Color.argb(255,255,255,255));
             paint.setTextSize(blockSize * 10);
 
-            canvas.drawText("BOOM!", blockSize*4, blockSize*14, paint);
+            canvas.drawText("BOOM!", blockSize*4, blockSize*12, paint);
 
             // Draw some text to prompt restarting
             paint.setTextSize(blockSize*2);
+            canvas.drawText("You took " + shotsTaken + " shots",
+                    blockSize*13, blockSize*16, paint);
             canvas.drawText("Take a shot to start again",
-                    blockSize*8, blockSize*18, paint);
+                    blockSize*9, blockSize*19, paint);
 
             // Start a new game
             newGame();
